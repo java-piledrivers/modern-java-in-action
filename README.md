@@ -1,5 +1,7 @@
 # 모던 자바 인 액션 스터디
 
+[👉공지사항 바로가기](https://github.com/java-piledrivers/modern-java-in-action/discussions)
+
 ## 목표
 
 - 모던 자바 인 액션에 나오는 모든 챕터들을 함께 공부한다.
