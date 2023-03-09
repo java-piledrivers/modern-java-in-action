@@ -7,7 +7,7 @@
 
 
 1.
-
+```java
 public interface Animal {
     public static final String name = "동물";
     
@@ -15,9 +15,11 @@ public interface Animal {
     public abstract void eat();
     public abstract void bark();
 }
+```
 
 
 2.
+```java
 public class Dog implements Animal{
     
     @Override
@@ -30,13 +32,14 @@ public class Dog implements Animal{
         System.out.println("멍멍!");
     }
 }
-
+```
 
 
 하지만 sleep() 이라는 기능을 추가싶다면 
 
 
 1.
+```java
 public interface Animal {
     public static final String name = "동물";
     
@@ -45,9 +48,10 @@ public interface Animal {
     public abstract void bark();
     public abstract  void sleep();
 }
+```
 
 2.
-
+```java
 public class Dog implements Animal{
     
     @Override
@@ -65,6 +69,7 @@ public class Dog implements Animal{
         System.out.println("쿨쿨zzzz");
     }
 }
+```
 
 해당 sleep 이라는 추상 메서드를 구현해주어야한다.
 
@@ -77,7 +82,7 @@ public class Dog implements Animal{
 
 
 1.
-
+```java
 public interface Animal {
     public static final String name = "동물";
     
@@ -89,9 +94,10 @@ public interface Animal {
 	System.out.println("쿨쿨zzzz");
 	}
 }
-
+```
 
 2.
+```java
 public class Dog implements Animal{
     
     @Override
@@ -104,18 +110,18 @@ public class Dog implements Animal{
         System.out.println("멍멍!");
     }
 }
+```
 
-
-
-
-3. public class Main {
+3. 
+```java
+public class Main {
 	public static void main(String args[]){
 
 	Dog dogTest = new Dog();
 	dogTest.sleep();
 	}
 }
-
+```
 
 
 결과 : 쿨쿨zzzz
