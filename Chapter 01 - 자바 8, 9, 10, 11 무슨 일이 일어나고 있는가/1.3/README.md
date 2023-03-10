@@ -35,7 +35,7 @@ File[] hiddenFiles = new File(".").listFiles(File::isHidden);
 Apple 클래스와 getColor 메서드가 있고, Apples 리스트를 포함하는 변수 inventory가 있다고 가정할 때, 원하는 조건에 맞게 리스트를 반환하는 프로그램을 구현해 보자.
 이때 누군가 150그램 이상인 사과만 필터링하고 싶다면 다음과 같이 코드를 작성할 수 있을 것이다.
 ```java
-public statuc List<Apple> filterHeavyApples(List<Apple> inventory) {
+public static List<Apple> filterHeavyApples(List<Apple> inventory) {
     List<Apple> result = new ArrayList<>();
     for (Apple apple : inventory) {
         if (apple.getWeight() > 150) {
