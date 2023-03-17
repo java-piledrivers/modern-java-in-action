@@ -58,6 +58,7 @@ public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p) 
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -69,16 +70,32 @@ public class Main {
                 new Apple("RED", 180)
         );
 
-        // 무거운 사과만 선택하기 위한 전략을 설정한다.
-        List<Apple> heavyApples = filterApples(apples, new AppleHeavyWeightPredicate());
-        System.out.println("Heavy Apples: " + heavyApples);
+        Scanner scanner = new Scanner(System.in);
+        int choice = 0;
+        while (choice != 3) {
+            System.out.println("전략 패턴 선택 (1-Heavy Apples, 2-Green Apples, 3-Exit):");
+            choice = scanner.nextInt();
 
-        // 녹색 사과만 선택하기 위한 전략을 설정한다.
-        List<Apple> greenApples = filterApples(apples, new AppleGreenColorPredicate());
-        System.out.println("Green Apples: " + greenApples);
+            List<Apple> filteredApples;
+
+            switch (choice) {
+                case 1:
+                    filteredApples = filterApples(apples, new AppleHeavyWeightPredicate());
+                    System.out.println("Heavy Apples: " + filteredApples);
+                    break;
+                case 2:
+                    filteredApples = filterApples(apples, new AppleGreenColorPredicate());
+                    System.out.println("Green Apples: " + filteredApples);
+                    break;
+                case 3:
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("올바르지 않은 값이 입력되었습니다.");
+            }
+        }
     }
 }
-
 
 ```
 
