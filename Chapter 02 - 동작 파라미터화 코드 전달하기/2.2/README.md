@@ -1,9 +1,14 @@
 # 2.2 동작 파라미터화
 
-동작파라미터화를 이용하면 자구 바뀌는 요구사항에 효과적으로 대응할 수 있다고 했다.
+동작파라미터화를 이용하면 자주 바뀌는 요구사항에 효과적으로 대응할 수 있다고 했다.
+
 앞에서 파라미터를 추가하는 방법이 아니라 변화하는 요구사항에 좀 더 유연하게 대응할 수 있는 방법이 필요하다고 하였다.
 
-유연하게 대응할 수 있는 방법으로 참 거짓을 반환하는 프레디케이트를 이용할 수 있다.
+유연하게 대응할 수 있는 방법으로 참 거짓을 반환하는 프레디케이트(함수형 인터페이스)를 이용할 수 있다.
+
+* 함수형 인터페이스는 추상 메소드만 가지며, 람다 표현식과 함께 사용할 수 있다.
+- 다른 함수형 인터페이스들
+https://jjingho.tistory.com/80
 
 ```java
 
@@ -107,13 +112,13 @@ public class AppleRedAndHeavyPredicate implements ApplePredicate {
     public bolean test(Apple apple) {
         return RED.equals(apple.getColor())
             && apple.getWeight() > 150 ;
-            
-            
+    }        
+}            
  ...
  
-         // 150 그램 이상이면서 빨간색 사과만 필터링하도록 한다.
-        List<Apple> heavyAndRedApples = filterApples(apples, new AppleHeavyWeightPredicate());
-        System.out.println("Heavy AND RED Apples: " + heavyAndRedApples);
+// 150 그램 이상이면서 빨간색 사과만 필터링하도록 한다.
+List<Apple> heavyAndRedApples = filterApples(apples, new AppleHeavyWeightPredicate());
+System.out.println("Heavy AND RED Apples: " + heavyAndRedApples);
 
 ```
 
