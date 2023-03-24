@@ -1,9 +1,11 @@
 # 람다 표현식을 조합할 수 있는 유용한 메서드
 자바 8 API의 `Comparator`, `Function`, `Predicate` 와 같은 함수형 인터페이스는 람다 표현식을 조합할 수 있는 메서드를 제공한다.
 람다 표현식을 조합할 수 있다는 것은 여러 개의 프레디케이트를 조합하여 하나의 큰 프레디케이트로 만들 수 있다는 것이다.   
-[함수형 인터페이스]([https://github.com/java-piledrivers/modern-java-in-action/tree/main/Chapter%2003%20-%20%EB%9E%8C%EB%8B%A4%20%ED%91%9C%ED%98%84%EC%8B%9D/3.4](https://github.com/java-piledrivers/modern-java-in-action/tree/main/Chapter%2003%20-%20%EB%9E%8C%EB%8B%A4%20%ED%91%9C%ED%98%84%EC%8B%9D/3.2#%ED%95%A8%EC%88%98%ED%98%95-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4))의
+[함수형 인터페이스](https://github.com/java-piledrivers/modern-java-in-action/tree/main/Chapter%2003%20-%20%EB%9E%8C%EB%8B%A4%20%ED%91%9C%ED%98%84%EC%8B%9D/3.2#%ED%95%A8%EC%88%98%ED%98%95-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4)의
 정의는 오직 하나의 추상 메서드를 지정하는 인터페이스인데 추가로 여러 메서드를 제공한다면 함수형 인터페이스의 정의에 어긋나다고 생각할 수 있지만 여기서 제공하는 
 메서드는 **디폴트 메서드**(default method)임으로 정의의 어긋나지 않는다. 
+
+<br>
 
 
 ## Comparator 조합
@@ -31,6 +33,7 @@ inventory.sort(comparing(Apple::getWeight)
           .thenComparing(Apple::getCountry));     무게가 같다면 원산지 국가별로 정렬
 ```
 
+<br>
 
 
 ## Predicate 조합
@@ -54,6 +57,10 @@ Predicate<Apple> redAndHeavyApple = redApple.and(apple -> apple.getWeight() > 15
 ```
 
 연산 순서는 왼쪽에서 오른쪽순이다. 
+
+
+<br>
+
 
 ## Function 조합
 
