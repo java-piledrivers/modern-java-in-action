@@ -74,3 +74,11 @@ Apple a6 = c6.apply(GREEN, 110);
 ```
 
 Color(int, int, int) 처럼 인수가 세 개인 생성자를 사용하려면 직접 함수형 인터페이스를 생성해야 한다.
+
+```java
+public interface TriFunction<T, U, V, R> {
+  R apply (T t, U u, V v);
+}
+
+TriFunction<Integer, Integer, Integer, Color> colorFactory = Color::new;
+```
