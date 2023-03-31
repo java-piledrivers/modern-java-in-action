@@ -38,7 +38,7 @@
   }
   ```
   
-  내부반복 : 반복을 알아서 처리하고 결과 스트림 값을 어디에 저장한다.
+  내부반복 : 반복을 알아서 처리하고 결과 스트림 값을 저장한다.
   
   ```
   List<String> names = menu.steram().Map(Dish::getName).collect(toList());
