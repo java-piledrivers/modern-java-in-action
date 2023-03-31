@@ -16,26 +16,31 @@
 
 
   한번쓰면 끝!! 
-
+  
+  ```
   List<String> title = Arrays.asList("JAVA8","In","Action");
   Stream<String> s = title.stream();
   s.forEach(System.out::println);  //출력됨
   s.forEach(System.out::println);  //안됨
+  ```
   
   
 ## 외부 반복과 내부 반복
   
   외부반복 : 사용자가 직접 요소를 반복한다. (For-each)
   
+  ```
   List<String> names = new ArrayList<>();
   for(Dish dish : menu){
     names.add(dish.getName());
   }
-  
+  ```
   
   내부반복 : 반복을 알아서 처리하고 결과 스트림 값을 어디에 저장한다.
   
+  ```
   List<String> names = menu.steram().Map(Dish::getName).collect(toList());
+  ```
   
  ## 내부반복을 사용하면 좋은점
   
