@@ -103,10 +103,10 @@ true
 <br/><br/>
 
 ## Optional
-값의 존재나 부재여부를 표현하는 컨테이너 클래스로, null은 쉽게 에러를 일으킬 수 있어 만들어짐 - 자세한 설명 11장
+값의 존재나 부재여부를 표현하는 컨테이너 클래스로, null은 쉽게 에러를 일으킬 수 있어 만들어짐 - 자세한 설명 11장<br/>
 값이 존재하는지 확인 후, 없을 때 처리 방법을 강제하는 기능 제공
 * isPresent() - Optional이 값을 포함하면 참(true) 을 반환, 값을 포함하지 않으면 거짓을 반환
-* ifPresent(Consumer<T> block) - 값이 있으면 주어진 블록을 실행
+* ifPresent(Consumer\<T\> block) - 값이 있으면 주어진 블록을 실행
 * T get() - 값이 존재하면 값을 반환, 값이 없으면 NoSuchElementException
 * T orElse(T default) - 값이 있으면 반환, 없으면 기본값
 <br/><br/>
