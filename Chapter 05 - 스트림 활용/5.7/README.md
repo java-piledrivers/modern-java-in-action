@@ -9,7 +9,7 @@ int calories = menu.stream()
 ```
 
 하지만 이 코드는 합계를 계산하기 전에 Integer를 기본형으로 언박싱하는 과정을 거치기 때문에 박싱 비용이 추가된다.  
-그 이유는 map 메서드가 Stream를 생성하기 때문인데, 이러한 상황에서는 스트림 API 숫자 스트림을 효율적으로 처리할 수 있또록 기본형 특화 스트림을 제공한다.
+그 이유는 map 메서드가 Stream를 생성하기 때문인데, 이러한 상황에서는 스트림 API 숫자 스트림을 효율적으로 처리할 수 있도록 기본형 특화 스트림을 제공한다.
 
 ## 기본형 숫자 스트림
 
@@ -25,7 +25,7 @@ int calories = menu.stream()
 
 ### 기본값 : OptionalInt
 
-스트림에 요소가 없는 상황과 실제 최댓값이 0인 상황을 구별하기 위해서 컨테이너 클래스인 Optional을 이용할 수 있는데, Optional을 Integer, String 등의 침조 형식으로 파리미터화할 수 있으며 OptionalInt와 같이 기본형 특화 스트림 버전도 제공한다.  
+스트림에 요소가 없는 상황과 실제 최댓값이 0인 상황을 구별하기 위해서 컨테이너 클래스인 Optional을 이용할 수 있는데, Optional을 Integer, String 등의 조 형식으로 파리미터화할 수 있으며 OptionalInt와 같이 기본형 특화 스트림 버전도 제공한다.  
 아래 코드를 통해 OptionalInt를 이용해서 IntStream의 최댓값 요소를 찾을 수 있다.
 
 ```java
