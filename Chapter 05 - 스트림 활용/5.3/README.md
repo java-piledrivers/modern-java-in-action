@@ -111,20 +111,20 @@ words.stream()
   
 
   
-  ### 세번째 시도
+### 세번째 시도
 
-    flatMap을 활용하면 문제 해결이 가능하다.  
+flatMap을 활용하면 문제 해결이 가능하다.  
    
   
 ```java
+
 List<String> uniqueCharacters = words.stream()
                                      .map(word -> word.split(""))   // Stream<String[]>
                                      .flafMap(Arrays::stream)       // Stream<String>
                                      .distinct()                    // Stream<String>
                                      .collect(toList());            // List<String>
-
 ```
-    
-    <br>
+
+<br>
     
 flatMap 메소드가 스트링 배열에서 개별 스트링으로 반환해주는 역활을 하였다.  
