@@ -93,6 +93,8 @@ public Function<List<T>, List<T>> finisher() {
 }
 ```
 
+![순차 리듀싱 과정의 논리적 순서](https://github.com/java-piledrivers/modern-java-in-action/blob/main/Chapter%2006%20-%20%EC%8A%A4%ED%8A%B8%EB%A6%BC%EC%9C%BC%EB%A1%9C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%88%98%EC%A7%91/6.5/%EC%88%9C%EC%B0%A8%20%EB%A6%AC%EB%93%80%EC%8B%B1%20%EA%B3%BC%EC%A0%95.png)
+
 
 ## combiner 메서드: 두 결과 컨테이너 병합
 
