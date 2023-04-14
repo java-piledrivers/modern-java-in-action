@@ -30,11 +30,18 @@ public interface Collector<T, A, R> {
 ---
 
 
+
 이제 각각의 메서드가 어떤 일들을 수행해주는지 살펴보자.
 
+예를 들어 Stream의 모든 요소를 List로 수집하는 ToListCollector라는 클래스를 구현할 수 있다.
 
+
+```java
+public class ToListCollector<T> implements Collector<T, List<T>, List<T>>
+
+```
+  
 ## supplier 메서드: 새로운 결과 컨테이너 만들기
-
 
 <br>
 
@@ -128,3 +135,53 @@ enum Characteristics {
 `UNORDERED`: 리듀싱 결과는 스트림 요소의 방문 순서나 누적 순서에 영향을 받지 않는다.  
 `CONCURRENT`: 다중 스레드에서 accumulator 함수를 동시에 호출할 수 있으며 이 컬렉터는 스트림의 병렬 리듀싱을 수행할 수 있다. 컬렉터의 플래그에 UNORDERED를 함께 설정하지 않았다면 데이터 소스가 정렬되어 있지 않은 상황에서만 병렬 리듀싱을 수행할 수 있다.  
 `IDENTITY_FINISH`: finisher 메서드가 반환하는 함수는 단순히 identity를 적용할 뿐이므로 이를 생략할 수 있다. 따라서 리듀싱 과정의 최종 결과로 누적자 객체를 바로 사용할 수 있다. 또한 누적자 A를 결과 R로 안전하게 형변환 할 수 있다. 
+
+
+지금까지 개발한 ToListCollector에서 스트림의 요소를 누적하는 데 사용한 리스트가 최종 결과 형식이므로 추가 변환이 필요 없다. 따라서 ToListCollector는 `IDENTITY_FINISH`다. 하지만 리스트의 순서는 상관이 없으므로 `UNORDERED`다. 마지막으로 ToListCollector는 `CONCURRENT`다.
+
+
+---
+
+지금까지 알아본 메서드를 다시 살펴보자. 
+
+
+```java
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.Collector;
+import static java.util.stream.Collector.Characteristics.*;
+
+public class ToListCollector<T> implements Collector<T, List<T>, List<T>> {
+
+    @Override
+    public Supplier<List<T>> supplier() {
+        return ArrayList::new; // 수집 연산의 시발점
+    }
+
+    @Override
+    public BiConsumer<List<T>, T> accumulator() {
+        return List::add;  // 탐색한 항목을 누적하고 바로 누적자를 고친다.
+    }
+
+    @Override
+    public Function<List<T>, List<T>> finisher() {
+        return Function.identity();  // 항등 함수
+    }
+
+    @Override
+    public BinaryOperator<List<T>> combiner() {
+        return (list1, list2) -> {  // 두 번째 콘텐츠와 합쳐서 첫 번째 누적자를 고친다.
+            list1.addAll(list2);    // 변경된 첫 번째 누적자를 반환한다.
+            return list1;
+        };
+    }
+
+    @Override
+    public Set<Characteristics> characteristics() {
+        return Collections.unmodifiableSet(EnumSet.of(IDENTITY_FINISH, CONCURRENT));  // 컬렉터의 플래그를 IDENTITY_FINISH, CONCURRENT로 설정한다. 
+    }
+}
+```
+
+위 구현이 Collections.toList 메서드가 반환하는 결과와 완전히 같은 것은 아니지만 사소한 최적화를 제외하면 대체로 비슷하다. 
+
