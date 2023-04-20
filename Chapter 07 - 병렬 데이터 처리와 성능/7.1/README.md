@@ -46,6 +46,58 @@ public long sequentialSum(long n) {
 
 ![2023-04-20_07-40-52](https://user-images.githubusercontent.com/59721293/233215430-d93c0a57-671d-4d3e-a813-1a7e91980e13.jpg)
 
-todo: 244p 부터 계속 작성
+> [Q) 순차,병렬 스트림에 같이 넣었을 때 244p](https://github.com/java-piledrivers/modern-java-in-action/issues/12#issuecomment-1517017089)
 
+## 스트림 성능 측정
 
+반복형, 순차 리듀싱, 병렬 리듀싱.. 어떤 방법이 가장 빠를까?
+
+> 병렬화를 이용하면 순차나 반복 형식에 비해 성능이 더 좋아질 것이라 추측할 것이다. 
+> 소프트웨어 공학에서 추측은 위험한 방법이다. 
+> 특히 성능을 최적화 할때는 세 가지 황금 규칙을 기억해야 한다. 첫째도 측정, 둘째도 측정, 셋째도 측정!
+
+JMG 플러그인 사용해서 아래처럼 벤치마크할 수 있다.
+```java
+@BenchmarkMode(Mode.AverageTime) // 평균 시간 측정
+@OutputTimeUnit(TimeUnit.MILLISECONDS) // 밀리초단위로 출력
+@Fork(2, jvmArgs={"-Xms4G", "-Xmx4G"}) // 4GB의 힙 공간을 제공한 환경에서 두번 벤치마크를 수행해 결과의 신뢰성확보
+public class ParallelStreamBenchmark {
+	private static final long N = 10_000_000L;
+
+	@Benchmark // 벤치마크 대상 메서드
+	public long sequentialSum() {
+		return Stream.iterate(1L, i -> i + 1).limit(N)
+		             .reduce(0L, Long::sum);
+	}
+
+	@TearDown(Level.Invocation) // 매 번 벤치마크를 실행한 다음에는 gc 동작 시도
+	public void tearDown() {
+		System.gc();
+	}
+}
+```
+
+[Q) 왜 iterate 문을 병렬로 처리한 것은 스트림을 병렬로 처리할 수 없었을까? 249p](https://github.com/java-piledrivers/modern-java-in-action/issues/12#issuecomment-1517034159)
+
+### 더 특화된 메서드 사용
+
+```java
+@Benchmark
+public long rangedSum() {
+	return LongStream.rangeClosed(1, N)
+	                 .parallel() // 넣고 벤치마크, 안넣고 벤치마크 시도
+	                 .reduce(0L, Long::sum);
+}
+```
+
+결과적으로 parallel() 넣었을 때 더 빠른 속도를 보여준다.
+LongStream.rangeClosed 는 기본형 long 을 직접사용하여 박싱 언박싱 오버헤드가 사라지고 쉽게 청크를 분할할 수 있는 숫자 범위를 생성한다. (iterate 도 limit 하는데 왜 이거만 청크로 분할할수 있다는 건지 모르겠음)
+
+상황에 따라서는 어떤 알고리즘을 병렬화하는 거보다 적절한 자료구조를 선택하는 것이 병렬화에 더 중요하다는 것을 알 수 있다.
+함수형 프로그래밍을 올바로 사용하면 반복적으로 코드를 실행하는 방법에 비해 멀티 코어 CPU 를 사용하는 병렬 실행의 힘을 느낄 수 있다.
+
+하지만 병렬화를 이용하려면 스트림을 재귀적으로 분할해야하고 각 서브스트림을 서로 다른 스레드의 리듀싱 연산으로 할당하고, 이들 결과를 하나의 값으로 합쳐야한다.
+멀티코어 간의 데이터 이동은 우리 생각보다 비싸다. 코어 간에 데이터 전송시간보다 훨씬 오래걸리는 작업만 병렬로 다른 코어에서 수행하는 것이 바람직하다. 
+
+## 병렬 스트림의 올바른 사용법
+todo 작성
