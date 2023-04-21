@@ -114,6 +114,7 @@ public class WordCounterSpliterator implements Spliterator<Character> {
 ### Spliterator Workflow
 
 ![parallel_proc_1.png](https://java-8-tips.readthedocs.io/en/stable/_images/parallel_proc_1.png)
+
 출처: https://java-8-tips.readthedocs.io/en/stable/parallelization.html#spliterator
 
 # Reference
