@@ -119,4 +119,5 @@ public class WordCounterSpliterator implements Spliterator<Character> {
 
 # Reference
 
-https://okky.kr/articles/345720
+- https://okky.kr/articles/345720
+  - 원글: https://hamait.tistory.com/612
