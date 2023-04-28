@@ -30,11 +30,16 @@ List<String> friends = List.of("LEE", "SANG", "WON");
 ```
 
 
+
+
 ## 집합 팩토리
 
 ```java
 Set<String> friends = Set.of("LEE", "SANG", "WON");
 ```
+
+
+
 
 ## 맵 팩토리
 
