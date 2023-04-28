@@ -9,6 +9,19 @@ friends.add("Olivia");
 friends.add("Thibaut");
 ```
 
+```java
+List<String> friends = Arrays.asList("LEE", "SANG");
+friends.set(0, "LEES");
+friends.add("WON");
+```
+
+Unsupported OperationException 예외 발생
+
+```java
+Set<String> friends = Stream.of("LEE", "SANG","WON")
+  .collect(Collector.toSet());
+```
+
 
 ## 리스트 팩토리
 
