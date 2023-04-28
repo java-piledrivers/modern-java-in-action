@@ -54,3 +54,32 @@ Map<String, Integer> ageOfFrieds = Map.ofEntries(
   entry("SANG", 2),
   entry("WON", 3));
 ```
+
+
+
+## Array.asList  VS   List.of
+
+변경 가능 여부
+
+```java
+List<Integer> list = Arrays.asList(1, 2, null);
+list.set(1, 10); // OK
+
+List<Integer> list = List.of(1, 2, 3);
+list.set(1, 10); // Fails with UnsupportedOperationException
+```
+
+
+Null 허용 여부
+
+```java
+List<Integer> list = Arrays.asList(1, 2, null); // OK
+List<Integer> list = List.of(1, 2, null); // Fails with NullPointerException
+
+List<Integer> list = Arrays.asList(1, 2, 3);
+list.contains(null); // Returns false
+
+List<Integer> list = List.of(1, 2, 3);
+list.contains(null); // Fails with NullPointerException
+```
+
