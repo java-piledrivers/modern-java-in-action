@@ -18,10 +18,10 @@ ConcurrentHashMap은 스트림에서 봤던 녀석들과 비슷한 종류의 세
 * 키, 값으로 연산(forEach, reduce, search)
 * 키로 연산(forEachKey, reduceKeys, searchKeys)
 * 값으로 연산(forEachValue, reduceValues, searchValues)
-* Map.Entry 객체로 연산(forEashEntry, reduceEntries, searchEntries)
+* Map.Entry 객체로 연산(forEachEntry, reduceEntries, searchEntries)
 
 
-아래의 예제는 reduceVAlues 메서드를 사용하여 맵의 최대값을 찾는다.
+아래의 예제는 reduceVlues 메서드를 사용하여 맵의 최대값을 찾는다.
 
 ```java
     ConcurrentHashMap<String, Long> map = new ConcurrentHashMap<>();
@@ -37,7 +37,7 @@ ConcurrentHashMap 클래스에서는 맵의 매핑 개수를 알고싶을때에�
 
 ## 8.4.3 집합뷰
 
-ConcurrentHashMap 클래스를 집합뷰로 반환하는 keySet 메서드도 제공한다. 이떄, 맵을 바꾸면 집합도 바뀌고, 반대로 집합을 변경하면 맵도 영향을 받는다. 
+ConcurrentHashMap 클래스를 집합뷰로 반환하는 keySet 메서드도 제공한다. 이때, 맵을 바꾸면 집합도 바뀌고, 반대로 집합을 변경하면 맵도 영향을 받는다. 
 
 
 ---
@@ -66,7 +66,7 @@ ConcurrentHashMap 클래스를 집합뷰로 반환하는 keySet 메서드도 제
 * 동기화를 보장한다. 
 
 
-여기 까지 봤을 떄 HashMap 과 다른 Map들의 차이점은 알곘는데, HashTable과 ConcurrentHashMap 의 차이점이 궁금할 수 있다.  
+여기 까지 봤을 떄 HashMap 과 다른 Map들의 차이점은 알겠는데, HashTable과 ConcurrentHashMap 의 차이점이 궁금할 수 있다.  
 이 둘의 차이점은 앞서 설명했던 것처럼 읽기 쓰기 연산 성능에서 ConcurrentHashMap 이 HashTable 보다 더 월등하다.  
 
 HashTable은 thread-safe를 유지하기 위해 데이터를 다루는 메서드에 *synchronized* 가 붙어있어 해당 메서드 실행시마다 동기화 락을 건다. 여기서 이 동기화 락이 매우 느리다는 단점이 있다.   
