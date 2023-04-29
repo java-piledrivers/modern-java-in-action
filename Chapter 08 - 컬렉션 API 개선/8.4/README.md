@@ -1,6 +1,6 @@
 # 8.4 개선된 ConcurrentHashMap
 
-ConcurrentHashMap 클래스는 동시성 친화적이며 최신 기술을 바녕ㅇ한 HashMap 버전이다. 내부 자료구조의 특정 부분만 잠궈 동시 추가, 갱신 작업을 허용한다.  
+ConcurrentHashMap 클래스는 동시성 친화적이며 최신 기술을 반영한 HashMap 버전이다. 내부 자료구조의 특정 부분만 잠궈 동시 추가, 갱신 작업을 허용한다.  
 떄문에 동기화된 Hashtable 버전에 비해 읽기 쓰기 연산 성능이 월등하다.  
 
 
