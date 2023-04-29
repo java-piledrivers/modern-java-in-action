@@ -83,14 +83,9 @@ map의 항목을 바꾸는 데 사용할 수 있는 메서드
 
 - replaceAll: BiFuction을 적용한 결과로 각 항목의 값을 교체
 - replace: 키가 존재하면 값을 바꿈, 키가 특정 맵으로 매핑 되었을때만 교체하는 메서드도 존재putAll()
+
     
-    ```java
-    like.replace("강호동", "키위");
-    like.replace("강호동", "키위", "멜론");
-    like.replaceAll((name, fruit) -> "상태 좋은 " + fruit);
-    ```
-    
-    ## 합침
+## 합침
     
 - 특정 맵의 데이터를 모두 put
 - 중복된 키는 덮어씀
@@ -107,16 +102,7 @@ map의 항목을 바꾸는 데 사용할 수 있는 메서드
     dislikedMovie.put("할아버지","앤트맨");
     
     ```
-    
-
-favoriteMovie.putAll(dislikedMovie); // {아빠=스파이더맨, 애기=반지의제왕, 할아버지=앤트맨, 엄마=배트맨}
-
-```java
-merge()
-- 중복된 키를 어떻게 합칠지 결정할 수 있음
-```javafavoriteMovie.forEach((key, value) -> dislikedMovie.merge(key,value,(movie1, movie2) -> movie1 + " & "+movie2));
-System.out.println(dislikedMovie);
-```
+   
 
 # 개선된 ConcurrentHashMap
 
