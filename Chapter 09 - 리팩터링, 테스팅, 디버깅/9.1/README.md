@@ -156,8 +156,9 @@ public void log(Level level, Supplier<String> msgSupplier) {
 <br>
 **실행 어라운드**<br>
 매번 같은 준비, 종료 과정을 반복적으로 수행하는 코드가 있다면 이를 람다로 변환할 수 있다.<br>
-준비, 종료 과정 처리 로직을 재사용해 중복 코드를 줄일 수 있다.
-이 코드는 파일을 열고 닫을 때 같은 로직을 사용했지만, 람다를 이용해 다양한 방식으로 파일을 처리할 수 있도록 파라미터화 되었다.
+준비, 종료 과정 처리 로직을 재사용해 중복 코드를 줄일 수 있다.<br>
+이 코드는 파일을 열고 닫을 때 같은 로직을 사용했지만, 람다를 이용해 다양한 방식으로 파일을 처리할 수 있도록 파라미터화 되었다.<br>
+
 ```java
 String oneLine = processFile((BufferedReader b) -> b.readline()); //람다 전달
 String twoLine = processFile((BufferedReader b) -> b.readline() + b.readline()); //다른 람다 전달
@@ -171,4 +172,4 @@ public static String processFile(BufferedReaderProcessor p) throws IOException {
 public interface BufferedReaderProcessor {
     string process(BufferedReader b) throws IOException;
 }
-````
+```
