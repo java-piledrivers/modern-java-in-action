@@ -154,6 +154,7 @@ public void log(Level level, Supplier<String> msgSupplier) {
 }
 ```
 <br>
+
 **실행 어라운드** <br>
 매번 같은 준비, 종료 과정을 반복적으로 수행하는 코드가 있다면 이를 람다로 변환하여<br>
 준비, 종료 과정 처리 로직을 재사용해 중복 코드를 줄일 수 있다.<br>
