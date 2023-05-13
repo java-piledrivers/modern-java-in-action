@@ -128,6 +128,7 @@ menu.parallelStream()
 <br>
 **조건부 연기 실행**<br>
 제어 흐름문이 복잡하게 얽힌 코드를 흔히 볼 수 있다. 다음은 내장 자바 Logger 클래스를 사용하는 예제다.<br>
+특정 조건에서만 코드가 실행될 수 있게 생성 과정을 연기해야 한다.<br>
 ```java
 if (logger.isLoggable(Log.FINER)) {
     logger.finer("Problem: " + generateDiagnostic());
@@ -159,6 +160,7 @@ public void log(Level level, Supplier<String> msgSupplier) {
 매번 같은 준비, 종료 과정을 반복적으로 수행하는 코드가 있다면 이를 람다로 변환하여<br>
 준비, 종료 과정 처리 로직을 재사용해 중복 코드를 줄일 수 있다.<br>
 이 코드는 파일을 열고 닫을 때 같은 로직을 사용했지만, 람다를 이용해 다양한 방식으로 파일을 처리할 수 있도록 파라미터화 되었다.<br>
+실행 어라운드 패턴은 실제 자원을 처리하는 코드를 설정과 정리 두 과정이 둘러싸는 형태를 갖는다.<br>
 
 ```java
 String oneLine = processFile((BufferedReader b) -> b.readline()); //람다 전달
