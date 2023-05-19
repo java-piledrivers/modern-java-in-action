@@ -74,9 +74,9 @@ public String getCarInsuranceName(Person person) {
 ```java
 def carInsuranceName = person?.car?.insurance?.name
 ```
-- 하스켈 : 선택형값(optional value)을 저장할 수 있는 Maybe 형식
+- 하스켈 : 선택형값(optional value)을 저장할 수 있는 Maybe 형식<br>
 주어진 형식의 값을 갖거나, 아무 값도 갖지 않는다. -> null 참조 사라짐.
-- 스칼라 : Opion[T]
+- 스칼라 : Option[T]<br>
 T 형식의 값을 갖거나 아무 값도 갖지 않는다.<br><br>
 
 자바 8은 선택형값 개념의 영향을 받아서 java.util.Optional라는 새로운 클래스를 제공한다.<br>
