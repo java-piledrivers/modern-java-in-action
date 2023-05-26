@@ -62,7 +62,7 @@ LocalTime time = dateTime.toLocalTime(); // 16:37:20
 
 
 
-# Instant 
+## Instant 
 ```java
 Instant.ofEpochSecond(2,1_000_000_000); // 2초후 1억 나노초
 Instant.ofEpochSecond(3,-1_000_000_000); // 3초전 1억 나노초
@@ -74,7 +74,7 @@ Instant.ofEpochSecond(3,-1_000_000_000); // 3초전 1억 나노초
 
 
 
-# Duration , Period
+## Duration , Period
 
 
 Duration : 두 객체(시,분,초,나노초)의 지속시간 
