@@ -8,8 +8,6 @@
 
 표준시간이 같은 지역을 묶어 time zone 규칙 집합 정의.
 
-https://www.iana.org/time-zones 참고
-
 getRules()이용해 규정을 획득한다.
 
 ```java
