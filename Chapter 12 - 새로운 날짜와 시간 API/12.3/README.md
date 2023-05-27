@@ -25,13 +25,6 @@ Instant instant1 = Instant.now();
 LocalDateTime timeFromInstant = LocalDateTime.ofInstant(instant, romeZone);
 ```
 
-ZonedDateTime 개념
-
-| LocalDate | LocalTime | ZoneId |
-| --- | --- | --- |
-| LocateDateTime |  |  |
-| ZonedDateTime |  |  |
-
 **2 - UTC/Greenwich 기준의 고정 오프셋**
 
 UTC 협정 세계시 / GMT 그리니치 표준시 를 기준으로 시간대를 표현하기도 한다.
