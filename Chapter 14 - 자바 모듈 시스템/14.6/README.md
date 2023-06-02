@@ -98,4 +98,24 @@ xml 코드를 살펴보면 순조롭게 빌드될 수 있도록 명시적으로 
 
 이제 mvn clean package 명령을 통해서 프로젝트의 모듈을 jar로 만들 수 있다.  
 
+```
+./expenses.application/target/expenses.application-1.0.jar
 
+./expenses.reader/ target/expenses.reader-1.0.jar
+```
+
+두개의 JAR 만들어진다.
+
+두 JAR를 모듈경로에 포함해서 모듈 애플리케이션을 실행할 수 있다.  
+
+```
+java --module-path \
+
+./expenses.application/target/expenses.application-1.0.jar \
+
+./expenses.reader/ target/expenses.reader-1.0.jar \
+
+ --moduel \ 
+
+expenses.application/com.example.expenses.application.ExpensesApplication
+```
