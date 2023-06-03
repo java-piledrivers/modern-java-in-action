@@ -3,7 +3,7 @@
 
 `HttpReader`를 구현하지 않고 아파치의 `httpClient` 같은 라이브러리를 사용해 구현하려면 어떻게 추가해야 할까?  
 
-modulre-info.java에 앞선 14.5 장에서 배운 requires 구문을 추가하고, 의존성을 기술하도록 `pom.xml`도 갱신해야 한다.
+module-info.java에 앞선 14.5 장에서 배운 requires 구문을 추가하고, 의존성을 기술하도록 `pom.xml`도 갱신해야 한다.
 
 자바는 JAR을 자동 모듈이라는 형태로 적절히 변환한다.
 
