@@ -12,8 +12,6 @@ Future와 CompletableFuture는 독립적 실행과 병렬성이라는 정식적 
 - 이 연결을 구독 subscription 이라 한다.
 - 이 연결을 이용해 메세지를 전송
 
-!https://blog.kakaocdn.net/dn/bgFUCg/btqFMHVD4gI/okghKTokAuuSHoPu7dOoWK/img.png
-
 발행자-구독자 모델
 
 **1 - 두 플로를 합치는 예제**
