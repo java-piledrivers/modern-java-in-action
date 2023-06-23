@@ -18,14 +18,14 @@ public interface Publisher<T> {
 
 //Publisher가 관련 이벤트를 발행할 때 호출할 수 있도록 콜백 메서드 네 개를 정의
 public interface Subscriber<T> {
-  void onSubscribe(Subscription s);
-  void onNext(T t);
-  void onError(Throwable t);
-  void onComplete();
+  void onSubscribe(Subscription s); // Subscriber가 publisher에게 등록할 때 Subscription 객제 전달
+  void onNext(T t); // 여러번 호출 가능
+  void onError(Throwable t); // Publisher에 장애가 발생했을 때 호출
+  void onComplete(); // 더이상 데이터가 없고 종료됨을 알릴 수 있음
 }
 
 public interface Subscription {
-  void request(long n); //publisher에게 이벤트를 처리할 준비가 되었음을 알림
+  void request(long n); //이벤트를 처리할 준비가 되었음을 알림
   void cancel(); //publisher에게 이벤트를 받지 않음을 통지
 }
 
