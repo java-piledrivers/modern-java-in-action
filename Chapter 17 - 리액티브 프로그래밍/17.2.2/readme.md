@@ -85,3 +85,18 @@ public class TempSubscriber implements Subscriber<TempInfo> {
 ```
 
 리액티브 애플리케이션이 실제 동작할 수 있도록 Publisher를 만들고 TempSubscriber를 이용해 Publisher에 구독하도록 Main 클래스를 구현한다.
+```java
+public class Main {
+  public static void main(String[] args) {
+//뉴욕에 새 Publisher를 만들고 TempSubscriber를 구독시킴
+    getTemperatures("New York").subscribe(new TempSubscriber());
+  }
+
+  private static Publisher<TempInfo> getTemperatures(String town) {
+//구독한 Subscriber에게 TempSubscription을 전송하는 Publisher를 반환return subscriber -> 
+subscriber.onSubscribe(
+        new TempSubscription(subscriber, town)
+    );
+  }
+}
+```
