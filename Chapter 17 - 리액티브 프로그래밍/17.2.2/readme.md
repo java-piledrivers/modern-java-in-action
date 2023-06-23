@@ -36,7 +36,8 @@ public class TempSubscription implements Subscription {
 
   @Override
   public void request(long n) {
-    executor.submit( () -> {//다른 스레드에서 다음 요소를 구독자에게 보낸다.for (long i = 0L; i < n; i++) {
+    executor.submit( () -> {//다른 스레드에서 다음 요소를 구독자에게 보낸다.
+      for (long i = 0L; i < n; i++) {
         try {
           subscriber.onNext(TempInfo.fetch(town));//현재 온도를 subscriber로 전달
         } catch (Exception e) {
