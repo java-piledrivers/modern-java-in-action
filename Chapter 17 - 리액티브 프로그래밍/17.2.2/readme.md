@@ -94,7 +94,8 @@ public class Main {
   }
 
   private static Publisher<TempInfo> getTemperatures(String town) {
-//구독한 Subscriber에게 TempSubscription을 전송하는 Publisher를 반환return subscriber -> 
+//구독한 Subscriber에게 TempSubscription을 전송하는 Publisher를 반환
+    return subscriber -> 
 subscriber.onSubscribe(
         new TempSubscription(subscriber, town)
     );
